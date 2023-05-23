@@ -1,0 +1,5 @@
+# PyTorch nightly release is requied for M1 Mac support
+torch==2.1.0.dev20230516
+torchaudio==2.1.0.dev20230516
+torchvision==0.16.0.dev20230516
+--extra-index-url https://download.pytorch.org/whl/nightly/cpu

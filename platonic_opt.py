@@ -68,7 +68,7 @@ def load_plato_dataset(
     )
 
     dataset = dataset.map(
-        _tokenize_document, batched=True, remove_columns=["text"], num_proc=4
+        _tokenize_document, batched=True, remove_columns=["text"]
     ).shuffle(seed=seed)
 
     dataset = dataset.with_format("torch")
@@ -156,6 +156,9 @@ def main(args):
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
     )
+
+    initial_metrics = trainer.evaluate()
+    trainer.save_metrics("initial", initial_metrics)
 
     print("Starting to train...")
     transformers.logging.set_verbosity_info()

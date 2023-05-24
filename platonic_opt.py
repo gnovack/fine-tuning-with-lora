@@ -143,7 +143,6 @@ def main(args):
         weight_decay=args.weight_decay,
         learning_rate=args.lr,
         warmup_ratio=args.warmup,
-        evaluation_strategy="steps",
         save_steps=1_000,
         eval_steps=1_000,
         save_total_limit=5,

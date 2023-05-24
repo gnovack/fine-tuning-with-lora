@@ -173,7 +173,11 @@ def main(args):
 
     final_checkpoint = os.path.join(args.output_dir, "final-model".format(args.epochs))
     os.makedirs(final_checkpoint, exist_ok=True)
-    trainer.save_model(final_checkpoint)
+    
+    if args.fine_tuning == "lora":
+        model.save_pretrained(final_checkpoint)
+    else:
+        trainer.save_model(final_checkpoint)
 
     final_metrics = trainer.evaluate()
     trainer.save_metrics("eval", final_metrics)
